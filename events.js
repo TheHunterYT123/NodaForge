@@ -111,6 +111,7 @@ carousel.addEventListener('touchend', () => {
     showImage(index);
     resetTimer();
   }
+});
 /*_________________________*/
 
 
