@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodaForge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="IMAGES/NodaForge-Logo.png" alt="NodaForge Logo" />
+    </div>
+  
+    <div class="search-container" id="searchContainer">
+      <input type="text" placeholder="Buscar productos..." id="searchInput" />
+    </div>
+  
+    <div class="icons">
+      <i class="ri-search-line" id="searchIcon"></i>
+      <i class="ri-user-line"></i>
+      <i class="ri-shopping-cart-line"></i>
+      <i class="ri-menu-line menu-icon" id="menuToggle"></i>
+    </div>
+  </header>
+
+  <div class="slide-menu" id="slideMenu">
+    <a href="#">Inicio</a>
+    <a href="#">Popular</a>
+    <a href="#">Pedidos</a>
+    <a href="#">Contacto</a>
+  </div>
+  <div class="overlay" id="menuOverlay"></div>
+
+
+
+  <div class="landingpageContainer1">
+    <div class="carousel-container">
+      <div class="carousel" id="carousel">
+        <img src="IMAGES/3d-objets.webp" alt="Objeto 3D 1" class="Objects3d">
+        <img src="IMAGES/objeto2.webp" alt="Objeto 3D 2" class="Objects3d">
+        <img src="IMAGES/objeto3.jpg" alt="Objeto 3D 3" class="Objects3d">
+      </div>
+      <div class="carousel-dots" id="carouselDots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  
+    <h1>El único límite es tu <span class="imaginacion">imaginación</span></h1>
+  
+    <div class="intro-empresa">
+      <div class="intro-visible">
+        <p>
+          En <strong>NodaForge</strong>, transformamos ideas en objetos reales gracias a nuestra tecnología de impresión 3D de alta precisión.
+        </p>
+      </div>
+    
+      <div class="intro-hidden" id="introExtra">
+        <p>
+          Ofrecemos servicios tanto a pequeña como a gran escala, adaptándonos a las necesidades de particulares, emprendedores y empresas.
+        </p>
+        <p>
+          Realizamos <strong>envíos a todo México</strong>, garantizando calidad, puntualidad y atención personalizada.
+          Ya sea una pieza única o producción en volumen, nuestros precios son accesibles y competitivos para todo tipo de proyectos.
+        </p>
+        <p>
+          ¡Contáctanos y da vida a tus ideas con la mejor tecnología 3D del mercado!
+        </p>
+      </div>
+    
+      <button class="toggle-button" id="toggleIntro">
+        Leer más
+        <span class="icon"></span>
+      </button>
+    </div>
+
+    <div class="btn-container">
+      <button class="verProductos">Ver Productos</button>
+    </div>
+    <div class="water-fill"></div>
+  </div>
+
+
+
+
+
+
+
+
+  <script src="events.js"></script>
+</body>
+</html>
