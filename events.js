@@ -84,6 +84,33 @@ dots.forEach((dot, i) => {
 
 showImage(index);
 resetTimer();
+
+let startX = 0;
+let endX = 0;
+
+const carousel = document.querySelector('.Objects3d').parentElement; // contenedor padre
+
+carousel.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+});
+
+carousel.addEventListener('touchmove', (e) => {
+  endX = e.touches[0].clientX;
+});
+
+carousel.addEventListener('touchend', () => {
+  const diffX = endX - startX;
+  if (Math.abs(diffX) > 50) { // umbral mínimo para considerar swipe
+    if (diffX > 0) {
+      // Swipe hacia la derecha, imagen anterior
+      index = (index - 1 + images.length) % images.length;
+    } else {
+      // Swipe hacia la izquierda, imagen siguiente
+      index = (index + 1) % images.length;
+    }
+    showImage(index);
+    resetTimer();
+  }
 /*_________________________*/
 
 
