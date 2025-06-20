@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodaForge > Productos > Populares</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="productosStyle.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="IMAGES/NodaForge-Logo.png" alt="NodaForge Logo" />
+    </div>
+  
+    <div class="search-container" id="searchContainer">
+      <input type="text" placeholder="Buscar productos..." id="searchInput" />
+    </div>
+  
+    <div class="icons">
+      <i class="ri-search-line" id="searchIcon"></i>
+      <i class="ri-user-line"></i>
+      <i class="ri-shopping-cart-line"></i>
+      <i class="ri-menu-line menu-icon" id="menuToggle"></i>
+    </div>
+  </header>
+
+  <div class="slide-menu" id="slideMenu">
+    <a href="index.html">Inicio</a>
+    <a href="productos.html">Popular</a>
+    <a href="#">Pedidos</a>
+    <a href="#">Contacto</a>
+  </div>
+  <div class="overlay" id="menuOverlay"></div>
+
+
+
+
+
+
+
+  <h1>Productos Populares</h1>
+
+
+  <div class="card-wrapper"></div>
+
+  <div class="modal" id="productModal" role="dialog" aria-labelledby="modalTitle" aria-modal="true" tabindex="-1" style="display: none;">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal" aria-label="Cerrar modal">&times;</button>
+      <img src="" alt="">
+      <h2 id="modalTitle"></h2>
+      <div class="modal-details">
+        <div class="modal-price">
+          <span class="price-main"></span>
+          <span class="price-discount"></span>
+        </div>
+
+        <div class="modal-meta"></div>
+
+        <p class="modal-description"></p>
+        <button class="buy-button">Comprar ahora</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<script>
+
+</script>
+<script src="events.js"></script>
+<script src="productos.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+/*__CARTAS DE LOS PRODUCTOS__*/
+body {
+  font-family: Arial, sans-serif;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #ffffff;
+}
+.card-wrapper {
+  padding: 8px 10px;
+}
+.product-card {
+  display: flex;
+  background-color: #172741;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  width: 100%;
+  min-height: 120px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.product-card:active {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+.image-container {
+  width: 40%;
+  max-width: 140px;
+  flex-shrink: 0;
+  height: 100%;
+}
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.product-info {
+  flex: 1;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.product-title {
+  font-size: 0.95rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.seller {
+  font-size: 0.75rem;
+  color: #ccc;
+  margin-bottom: 6px;
+}
+.price {
+  font-size: 1rem;
+  color: #4A90E2;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.discount {
+  font-size: 0.75rem;
+  color: #829fff;
+  margin-left: 6px;
+}
+.installments {
+  font-size: 0.7rem;
+  color: #acacac;
+  margin-bottom: 4px;
+}
+.envio {
+  font-size: 0.8rem;
+  color: #3cff5c;
+}
+.tag {
+  font-size: 0.7rem;
+  color: #999;
+  text-align: right;
+  margin-top: auto;
+}
+@media (min-width: 600px) {
+  .product-title {
+    font-size: 1rem;
+  }
+}
+
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+h1 {
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease forwards;
+}
+
+.card-wrapper {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 0.8s ease forwards;
+}
+
+.card-wrapper:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.card-wrapper:nth-child(3) {
+  animation-delay: 0.6s;
+}
+/*______________________________*/
+
+
+
+
+
+/*__CARTA DEL PRODUCTO PRE VENTA__*/
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  overflow-y: auto; 
+  overflow-x: hidden; 
+  z-index: 10000;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.modal.active {
+  display: block;
+}
+
+.modal-content {
+  background: #172741;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 450px;
+  width: 100%;
+  color: white;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+  font-family: Arial, sans-serif;
+  margin: 40px auto;
+  overflow-x: hidden;  
+  box-sizing: border-box;  
+}
+.modal-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 40px;
+  background: transparent;
+  border: none;
+  color: #4A90E2;
+  cursor: pointer;
+  font-weight: bold;
+}
+.close-btn:hover {
+  color: white;
+}
+.buy-button {
+  background-color: #4A90E2;
+  border: none;
+  padding: 12px 18px;
+  font-size: 1rem;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+.buy-button:hover {
+  background-color: #357ABD;
+}
+
+.modal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-price {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.price-main {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #4A90E2;
+}
+
+.price-discount {
+  font-size: 0.9rem;
+  color: #00e676;
+  background: rgba(0, 230, 118, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.modal-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meta-item i {
+  color: #00e676;
+  font-size: 1.2rem;
+}
+
+.modal-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #e0e0e0;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  border-left: 4px solid #4A90E2;
+  border-radius: 8px;
+}
+
+.modal.active .modal-content {
+  opacity: 1;
+  transform: scale(1);
+  animation: fadeInModal 0.3s ease forwards;
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/*______________________*/
+
+
+
+/*__MENSAJE DE REGISTRACION__*/
+.snackbar {
+  position: fixed;
+  bottom: 40px;
+  left: 0px;
+  background-color: #ff3b3b;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 0 12px 12px 0;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 10001;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.3s ease, transform 0.4s ease;
+  text-decoration: underline;
+  text-decoration-color: white;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+
+.snackbar.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+/*______________________*/
