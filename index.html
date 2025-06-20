@@ -28,8 +28,8 @@
   </header>
 
   <div class="slide-menu" id="slideMenu">
-    <a href="#">Inicio</a>
-    <a href="#">Popular</a>
+    <a href="index.html">Inicio</a>
+    <a href="productos.html">Popular</a>
     <a href="#">Pedidos</a>
     <a href="#">Contacto</a>
   </div>
@@ -88,10 +88,87 @@
 
 
 
+  <section class="custom-orders-section">
+    <h2 class="section-title">Pedidos Personalizados</h2>
+    <div class="orders-container">
+      <article class="order-card premium" data-link="ordenPremium.html">
+        <div class="content-wrapper">
+          <h3 class="order-title">Pedido a mayor escala</h3>
+          <ul class="order-list">
+            <li>Producción en volumen</li>
+            <li>Descuentos por cantidad</li>
+            <li>Entrega rápida y confiable</li>
+            <li>Soporte dedicado</li>
+          </ul>
+        </div>
+      </article>
+  
+      <article class="order-card limited" data-link="ordenLimitada.html">
+        <div class="content-wrapper">
+          <h3 class="order-title">Pedido limitado</h3>
+          <ul class="order-list">
+            <li>Piezas únicas o pequeñas cantidades</li>
+            <li>Diseño personalizado</li>
+            <li>Calidad artesanal</li>
+            <li>Tiempo de entrega flexible</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  
+    <button class="consult-btn" type="button" aria-label="Consultar precios">Consultar precios</button>
+  </section>
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('acceptCookies');
+  
+    setTimeout(() => {
+      if (!localStorage.getItem('cookiesAccepted')) {
+        banner.classList.add('show');
+      }
+    }, 2000);
+  
+    acceptBtn.addEventListener('click', () => {
+      banner.classList.remove('show');
+      localStorage.setItem('cookiesAccepted', 'true');
+    });
+  });
+  </script>
   <script src="events.js"></script>
 </body>
+
+
+
+<div class="cookie-banner-prof" id="cookieBanner">
+  <div class="cookie-content">
+    <h2>Aviso de Cookies</h2>
+    <p>
+      Este sitio utiliza cookies para mejorar tu experiencia de navegación y análisis de uso. 
+      Al continuar, aceptas nuestra política de cookies.
+    </p>
+    <button id="acceptCookies" class="cookie-btn">Aceptar</button>
+  </div>
+</div>
 </html>
