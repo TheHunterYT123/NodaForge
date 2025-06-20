@@ -36,6 +36,7 @@ document.addEventListener('keydown', function (e) {
     searchContainer.classList.remove('active');
   }
 });
+
 /*________*/
 
 
@@ -49,14 +50,23 @@ const dots = document.querySelectorAll('.dot');
 let index = 0;
 let interval;
 
-function showImage(i) {
+function showImage(i, direction = 'right') {
   images.forEach((img, j) => {
-    img.style.display = i === j ? 'block' : 'none';
-    img.style.opacity = '0';
-    img.style.animation = 'none';
-    img.offsetHeight;
     if (i === j) {
-      img.style.animation = 'slideInFromRight 1s forwards';
+      img.style.display = 'block';
+      img.style.opacity = '1';
+
+      img.style.animation = 'none';
+      img.offsetHeight;
+
+      img.style.animation = direction === 'left'
+        ? 'slideFromLeft 1s forwards'
+        : 'slideInFromRight 1s forwards';
+
+    } else {
+      img.style.display = 'none';
+      img.style.opacity = '0';
+      img.style.animation = 'none';
     }
   });
 
@@ -65,8 +75,9 @@ function showImage(i) {
 }
 
 function nextImage() {
-  index = (index + 1) % images.length;
-  showImage(index);
+  const newIndex = (index + 1) % images.length;
+  showImage(newIndex, 'right');
+  index = newIndex;
 }
 
 function resetTimer() {
@@ -76,8 +87,9 @@ function resetTimer() {
 
 dots.forEach((dot, i) => {
   dot.addEventListener('click', () => {
+    const direction = i > index ? 'right' : 'left';
     index = i;
-    showImage(index);
+    showImage(index, direction);
     resetTimer();
   });
 });
@@ -85,11 +97,9 @@ dots.forEach((dot, i) => {
 showImage(index);
 resetTimer();
 
-// ✅ Swipe para móviles
 let startX = 0;
 let endX = 0;
 
-// Si tienes más de un .Objects3d, usa solo el primero como base del swipe
 const baseImage = images[0];
 if (baseImage) {
   const carousel = baseImage.parentElement;
@@ -105,12 +115,15 @@ if (baseImage) {
   carousel.addEventListener('touchend', () => {
     const diffX = endX - startX;
     if (Math.abs(diffX) > 50) {
+      let direction = 'right';
       if (diffX > 0) {
         index = (index - 1 + images.length) % images.length;
+        direction = 'left';
       } else {
         index = (index + 1) % images.length;
+        direction = 'right';
       }
-      showImage(index);
+      showImage(index, direction);
       resetTimer();
     }
   });
@@ -141,10 +154,80 @@ const btn = document.querySelector('.verProductos');
 const waterFill = document.querySelector('.water-fill');
 
 btn.addEventListener('click', () => {
-  waterFill.style.height = '100%';
+  if (navigator.vibrate) {
+    navigator.vibrate(100);
+  }
 
-  setTimeout(() => {
-    window.location.href = '/productos.html'; 
-  }, 2500); 
+  const rect = btn.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  waterFill.style.left = `${centerX}px`;
+  waterFill.style.top = `${centerY}px`;
+  waterFill.style.opacity = '1';
+  waterFill.style.transform = 'translate(-50%, -50%) scale(0)';
+
+  waterFill.offsetHeight;
+  const maxRadius = Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2);
+  const scale = maxRadius / 50;
+
+  waterFill.style.transition = 'transform 1s ease-out';
+  waterFill.style.transform = `translate(-50%, -50%) scale(${scale})`;
+
+  function onTransitionEnd(event) {
+    if (event.propertyName === 'transform') {
+      waterFill.removeEventListener('transitionend', onTransitionEnd);
+      window.location.href = '/productos.html';
+    }
+  }
+
+  waterFill.addEventListener('transitionend', onTransitionEnd);
 });
 /*__________________*/
+
+
+
+
+
+
+
+
+
+
+/*__BOTON PARA LAS ORDENES PERSONALIZADAS__*/
+const cards = document.querySelectorAll('.order-card');
+const consultBtn = document.querySelector('.consult-btn');
+let selectedCard = null;
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    cards.forEach(c => c.classList.remove('clicked'));
+    card.classList.add('clicked');
+    selectedCard = card;
+
+    consultBtn.textContent = 'Consultar precios';
+  });
+});
+
+consultBtn.addEventListener('click', () => {
+  if (!selectedCard) {
+
+    if (navigator.vibrate) {
+      navigator.vibrate([100, 50, 100]);
+    }
+
+    consultBtn.textContent = 'Selecciona un pedido';
+
+    consultBtn.classList.add('shake');
+    setTimeout(() => {
+      consultBtn.classList.remove('shake');
+    }, 400);
+    return;
+  }
+
+  const link = selectedCard.dataset.link;
+  if (link) {
+    window.location.href = link;
+  }
+});
+/*_________________________________________*/
